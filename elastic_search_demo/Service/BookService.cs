@@ -50,6 +50,11 @@ namespace elastic_search_demo.Service
             return await _bookRepository.DeleteBook(id);
         }
 
+        public async Task<List<Book>> UnifiedSearch(string keyword)
+        {
+            return await _bookRepository.UnifiedSearch(keyword);
+        }
+
         public async Task<List<Book>> GetAll()
         {
             return await _bookRepository.GetAll();

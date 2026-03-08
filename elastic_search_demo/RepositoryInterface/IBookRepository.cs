@@ -10,7 +10,7 @@ namespace elastic_search_demo.RepositoryInterface
         Task<List<Book>> FuzzySearch(string keyword);
         Task<List<Object>> HighlightSearch(string keyword);
         Task<bool> DeleteBook(string id);
+        Task<List<Book>> UnifiedSearch(string keyword);
         Task<List<Book>> GetAll();
-
      }
 }

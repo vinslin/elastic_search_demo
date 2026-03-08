@@ -90,5 +90,12 @@ namespace elastic_search_demo.Controllers
             var results = await _bookService.GetAll();
             return Ok(results);
         }
+
+        [HttpGet("unified-search")]
+        public async Task<IActionResult> UnifiedSearch(string keyword)
+        {
+            var results = await _bookService.UnifiedSearch(keyword);
+            return Ok(results);
+        }
     }
 }

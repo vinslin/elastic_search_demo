@@ -88,6 +88,25 @@ namespace elastic_search_demo.Repository
 
         }
 
+        public async Task<List<Book>> UnifiedSearch(string keyword)
+        {
+            var response = await elasticClient.SearchAsync<Book>(s => s
+                .Query(q => q
+                    .MultiMatch(m => m
+                        .Query(keyword)
+                        .Fields(f => f
+                            .Field(p => p.BookName, boost: 3) 
+                            .Field(p => p.BookText)
+                        )
+                        .Type(TextQueryType.BestFields)
+                        .Fuzziness(Fuzziness.Auto)
+                    )
+                )
+            );
+
+            return response.Documents.ToList();
+        }
+
 
     }
 }

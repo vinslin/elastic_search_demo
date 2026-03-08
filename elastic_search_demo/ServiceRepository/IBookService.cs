@@ -14,7 +14,7 @@ namespace elastic_search_demo.ServiceRepository
         Task<List<object>> HighlightSearch(string keyword);
 
         Task<bool> DeleteBook(string id);
-
+        Task<List<Book>> UnifiedSearch(string keyword);
         Task<List<Book>> GetAll();
     }
 }
