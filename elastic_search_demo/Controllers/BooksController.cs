@@ -84,7 +84,7 @@ namespace elastic_search_demo.Controllers
             return NotFound("Book not found.");
         }
 
-        [HttpGet("gat-all")]
+        [HttpGet("get-all")]
         public async Task<IActionResult> GetAllBooks()
         {
             var results = await _bookService.GetAll();
