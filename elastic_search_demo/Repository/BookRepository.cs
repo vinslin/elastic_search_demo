@@ -48,7 +48,7 @@ namespace elastic_search_demo.Repository
         //ranking search 
         public async Task<List<Book>> SearchRanking(string keyword) 
         {
-            var response = await elasticClient.SearchAsync<Book>(s => s.Query(q => q.MultiMatch(m=>m.Fields(f => f.Field(p => p.BookName,boost:3).Field(p=>p.BookText)).Query(keyword))));
+            var response = await elasticClient.SearchAsync<Book>(s => s.Query(q => q.MultiMatch(m=>m.Fields(f => f.Field(p => p.BookName).Field(p=>p.BookText, boost: 3)).Query(keyword))));
             return response.Documents.ToList();        
         }
 

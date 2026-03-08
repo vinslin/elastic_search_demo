@@ -29,7 +29,7 @@ namespace elastic_search_demo.Controllers
             return BadRequest("Failed to index the book.");
         }
 
-        [HttpGet]
+        [HttpGet("normal-search")]
         public async Task<ActionResult<List<Book>>> NormalSearch(string keyword)
         {
             var results = await _bookService.Search(keyword);
