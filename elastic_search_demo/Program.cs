@@ -6,8 +6,12 @@ using Nest;
 
 var builder = WebApplication.CreateBuilder(args);
 
+var uri = builder.Configuration["ElasticSearch:Uri"];
+var defaultIndex = builder.Configuration["ElasticSearch:DefaultIndex"];
+
+var settings = new ConnectionSettings(new Uri(uri))
+                    .DefaultIndex(defaultIndex);
 // Add services to the container.
-var settings = new ConnectionSettings(new Uri("http://localhost:9200")).DefaultIndex("books");
 
 var client = new ElasticClient(settings);
 
